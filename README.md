@@ -5,7 +5,7 @@ Tools and helpers for biometry
 ## Installation
 
 ```sh
-npm install react-native-biometry-tools
+yarn add git+https://git.appkode.ru/diary/diary_biometry_tools
 ```
 
 ## Usage
