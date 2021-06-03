@@ -1,18 +1,36 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import BiometryTools from 'react-native-biometry-tools';
+import BiometryTools, { BiometryType } from 'react-native-biometry-tools';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [isAvailable, setAvailableSensor] = React.useState<boolean>(false);
+  const [supportedBiometryType, setBiometryType] = React.useState<BiometryType | undefined>(null);
+  const [error, setBiometryErrorMessage] = React.useState<string | undefined>();
 
   React.useEffect(() => {
-    BiometryTools.multiply(3, 7).then(setResult);
+    BiometryTools
+      .isSensorAvailable()
+      .then(() => setAvailableSensor(true))
+      .catch((e) => {
+        setBiometryErrorMessage(e.message)
+        setAvailableSensor(false)
+      })
+
+    BiometryTools
+      .getSupportedBiometryType()
+      .then(setBiometryType)
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Sensor is available: <Text style={styles.resultText}>{JSON.stringify(isAvailable)}</Text></Text>
+      {
+        !!error && (
+          <Text>Reason unavailable: <Text style={styles.resultText}>{error}</Text></Text>
+        )
+      }
+      <Text>Supported biometry type: <Text style={styles.resultText}>{supportedBiometryType}</Text></Text>
     </View>
   );
 }
@@ -28,4 +46,7 @@ const styles = StyleSheet.create({
     height: 60,
     marginVertical: 20,
   },
+  resultText: {
+    fontWeight: '700'
+  }
 });

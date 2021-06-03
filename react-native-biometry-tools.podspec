@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://git.appkode.ru/diary/diary_biometry_tools.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm}"
+  s.framework    = 'LocalAuthentication'
 
   s.dependency "React-Core"
 end
