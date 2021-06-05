@@ -82,3 +82,7 @@ enum BiometryErrorCode {
 }
 
 ```
+
+## Tags
+
+`release` - create release tag and increase version
