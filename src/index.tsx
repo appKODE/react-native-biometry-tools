@@ -23,13 +23,13 @@ export enum BiometryType {
   IRIS = 'Iris'
 }
 
-export enum BiometryError {
-  NOT_AVAILABLE = 'BiometryScannerNotAvailable',
+export enum BiometryErrorCode {
+  NOT_ENROLLED = 'BiometryScannerNotEnrolled',
   NOT_SUPPORTED = 'BiometryScannerNotSupported',
   /**
    * ios only
    */ 
-  NOT_ENROLLED = 'BiometryScannerNotEnrolled',
+  NOT_AVAILABLE = 'BiometryScannerNotAvailable',
   /**
    * ios only
    */ 
@@ -52,6 +52,10 @@ type TBiometryTools = {
    */
   getSupportedBiometryType: () => Promise<BiometryType | null>
 };
+
+export interface BiometryAvailableError extends Error {
+  code: BiometryErrorCode
+}
 
 const { BiometryTools } = NativeModules;
 
