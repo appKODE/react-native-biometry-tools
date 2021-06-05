@@ -1,0 +1,17 @@
+before_script:
+  - chmod +x ./scripts/create-tag.sh
+
+services:
+  - docker:dind
+
+stages:
+  - create-tag
+
+test:
+  stage: create-tag
+  image: node:dubnium
+  only:
+    - /^release$/
+  tags: [frontend]
+  script:
+    - ./scripts/create-tag.sh
