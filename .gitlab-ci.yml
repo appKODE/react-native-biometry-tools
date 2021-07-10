@@ -1,11 +1,13 @@
 before_script:
   - chmod +x ./scripts/update-version.sh
+  - chmod +x ./scripts/test.sh
 
 services:
   - docker:dind
 
 stages:
   - release
+  - prepare
 
 release:
   stage: release
@@ -15,3 +17,13 @@ release:
   tags: [frontend]
   script:
     - ./scripts/update-version.sh
+
+release:
+  stage: prepare
+  image: node:dubnium
+  only:
+    - /^prepare$/
+  tags: [frontend]
+  script:
+    - ./scripts/test.sh
+
