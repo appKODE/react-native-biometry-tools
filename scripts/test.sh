@@ -32,3 +32,6 @@ git clone https://gitlab-ci-token:$GITLAB_ACCESS_TOKEN@$GITLAB_REPOSITORY.git
 cd $GITLAB_PROJECT_NAME
 
 yarn install
+
+cd node_modules/react-native-biometry-tools
+ls
