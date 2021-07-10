@@ -10,6 +10,12 @@
 # $GITLAB_PROJECT_ID
 # $ISSUE_URL_FORMAT
 
+node -v
+
+$(node -v)
+
+echo node -v
+
 # remember home directory
 HOME_DIRECTORY=$(echo $PWD)
 
@@ -30,8 +36,6 @@ git tag -d update-version
 cd /tmp
 git clone https://gitlab-ci-token:$GITLAB_ACCESS_TOKEN@$GITLAB_REPOSITORY.git
 cd $GITLAB_PROJECT_NAME
-
-node -v
 
 $(yarn install)
 
