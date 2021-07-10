@@ -11,7 +11,7 @@ const options = {
 };
 
 let result;
-console.log(process.cwd())
+
 if (process.cwd() !== root || args.length) {
   // We're not in the root of the project, or additional arguments were passed
   // In this case, forward the command to `yarn`
