@@ -44,7 +44,7 @@ public class BiometryToolsModule extends ReactContextBaseJavaModule {
 
             biometricManager = BiometricManager.from(getReactApplicationContext());
 
-            switch (biometricManager.canAuthenticate()) {
+            switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)) {
                 case BiometricManager.BIOMETRIC_SUCCESS:
                     promise.resolve(biometrySupportedType);
                     break;
@@ -52,11 +52,11 @@ public class BiometryToolsModule extends ReactContextBaseJavaModule {
                     promise.reject("BiometryScannerNotEnrolled", "Biometry scanner is not enrolled");
                     break;
             }
-            
+
         } else {
             promise.reject("BiometryScannerNotSupported", "Biometry scanner is not supported");
         }
-        
+
     }
 
     private String getAvailableFeature() {
