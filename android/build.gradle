@@ -49,11 +49,10 @@ repositories {
         url("$rootDir/../node_modules/react-native/android")
     }
     google()
-    jcenter()
 }
 
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation 'androidx.biometric:biometric:1.0.1'
+    implementation "androidx.biometric:biometric:1.1.0"
 }
