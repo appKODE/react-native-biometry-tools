@@ -1,6 +1,6 @@
 # react-native-biometry-tools
 
-A lightweight library for determining the supported type of biometrics
+A lightweight library for determining the supported type of biometrics.
 
 ## Motivation
 
