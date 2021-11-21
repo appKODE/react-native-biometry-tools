@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://git.appkode.ru/diary/diary_biometry_tools/compare/v0.1.8...v0.1.9) (2021-11-21)
+
 ### [0.1.8](https://git.appkode.ru/diary/diary_biometry_tools/compare/v0.1.7...v0.1.8) (2021-11-21)
 
 ### [0.1.7](https://git.appkode.ru/diary/diary_biometry_tools/compare/v0.1.6...v0.1.7) (2021-11-21)
