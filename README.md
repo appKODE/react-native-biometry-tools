@@ -9,7 +9,7 @@ The [react-native-keychain](https://www.npmjs.com/package/react-native-keychain)
 ## Installation
 
 ```sh
-yarn add git+https://git.appkode.ru/diary/diary_biometry_tools
+yarn add @kode/react-native-biometry-tools
 ```
 
 ## Usage
