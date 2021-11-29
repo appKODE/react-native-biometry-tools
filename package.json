@@ -1,6 +1,6 @@
 {
   "name": "@kode/react-native-biometry-tools",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Tools and helpers for biometry",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
