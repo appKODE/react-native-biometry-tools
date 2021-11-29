@@ -1,5 +1,5 @@
 {
-  "name": "react-native-biometry-tools",
+  "name": "@kode/react-native-biometry-tools",
   "version": "0.1.9",
   "description": "Tools and helpers for biometry",
   "main": "lib/commonjs/index",
@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://git.appkode.ru/diary/diary_biometry_tools",
-  "author": "@ca <ca@kode.ru> (https://git.appkode.ru/diary)",
+  "repository": "https://github.com/appKODE/react-native-biometry-tools",
+  "author": "frontend-team@kode.ru",
   "license": "MIT",
   "bugs": {
-    "url": "https://git.appkode.ru/diary/diary_biometry_tools/issues"
+    "url": "https://github.com/appKODE/react-native-biometry-tools/issues"
   },
-  "homepage": "https://git.appkode.ru/diary/diary_biometry_tools#readme",
+  "homepage": "https://github.com/appKODE/react-native-biometry-tools#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
