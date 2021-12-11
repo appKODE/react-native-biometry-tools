@@ -9,13 +9,13 @@ The [react-native-keychain](https://www.npmjs.com/package/react-native-keychain)
 ## Installation
 
 ```sh
-yarn add @kode/react-native-biometry-tools
+yarn add @kode-frontend/react-native-biometry-tools
 ```
 
 ## Usage
 
 ```js
-import BiometryTools from 'react-native-biometry-tools';
+import BiometryTools from '@kode-frontend/react-native-biometry-tools';
 
 export default function App() {
 
