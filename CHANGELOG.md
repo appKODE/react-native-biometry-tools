@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/appKODE/react-native-biometry-tools/compare/v0.1.10...v0.1.11) (2021-12-11)
+
 ### [0.1.10](https://github.com/appKODE/react-native-biometry-tools/compare/v0.1.9...v0.1.10) (2021-11-29)
 
 ### [0.1.9](https://git.appkode.ru/diary/diary_biometry_tools/compare/v0.1.8...v0.1.9) (2021-11-21)
