@@ -1,5 +1,5 @@
 {
-  "name": "@kode/react-native-biometry-tools",
+  "name": "@kode-frontend/react-native-biometry-tools",
   "version": "0.1.11",
   "description": "Tools and helpers for biometry",
   "main": "lib/commonjs/index",
