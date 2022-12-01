@@ -149,5 +149,8 @@
         }
       ]
     ]
+  },
+  "resolutions": {
+    "@types/react": "16.9.19"
   }
 }
