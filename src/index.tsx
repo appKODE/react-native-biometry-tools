@@ -3,24 +3,24 @@ import { NativeModules } from 'react-native';
 export enum BiometryType {
   /**
    * ios only
-   */ 
+   */
   FACE_ID = 'Face ID',
   /**
    * ios only
-   */ 
+   */
   TOUCH_ID = 'Touch ID',
   /**
    * android only
-   */ 
+   */
   FINGERPRINT = 'Fingerprint',
   /**
    * android only
-   */ 
+   */
   FACE = 'Face',
   /**
    * android only
-   */ 
-  IRIS = 'Iris'
+   */
+  IRIS = 'Iris',
 }
 
 export enum BiometryErrorCode {
@@ -28,16 +28,16 @@ export enum BiometryErrorCode {
   NOT_SUPPORTED = 'BiometryScannerNotSupported',
   /**
    * ios only
-   */ 
+   */
   NOT_AVAILABLE = 'BiometryScannerNotAvailable',
   /**
    * ios only
-   */ 
+   */
   PASSCODE_NOT_SET = 'PasscodeNotSet',
   /**
    * ios only
-   */ 
-  DEVICE_LOCKED_PERMANENT = 'DeviceLockedPermanent'
+   */
+  DEVICE_LOCKED_PERMANENT = 'DeviceLockedPermanent',
 }
 
 type TBiometryTools = {
@@ -46,15 +46,15 @@ type TBiometryTools = {
    * else it throws an exception
    */
   isSensorAvailable: () => Promise<BiometryType>;
-   /**
+  /**
    * Promise return supported biometry type if biometry is supported
    * else it returns null
    */
-  getSupportedBiometryType: () => Promise<BiometryType | null>
+  getSupportedBiometryType: () => Promise<BiometryType | null>;
 };
 
 export interface BiometryAvailableError extends Error {
-  code: BiometryErrorCode
+  code: BiometryErrorCode;
 }
 
 const { BiometryTools } = NativeModules;
