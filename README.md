@@ -2,17 +2,17 @@
 
 A lightweight library for determining the supported type of biometrics.
 
-## Motivation
+## 🚀 Motivation
 
 The [react-native-keychain](https://www.npmjs.com/package/react-native-keychain) does not allow you to determine the type of biometrics supported by the device if it is not registered.
 
-## Installation
+## 📥 Installation
 
 ```sh
 yarn add @kode-frontend/react-native-biometry-tools
 ```
 
-## Usage
+## 🎮 Usage
 
 ```js
 import BiometryTools from '@kode-frontend/react-native-biometry-tools';
@@ -48,12 +48,13 @@ export default function App() {
 
 ```
 
-## Available methods
+## 📦 Available methods
 
-| method                   | description                                                                                             |
-| ------------------------ | ------------------------------------------------------------------------------------------------------- |
-| isSensorAvailable        | Promise return `BiometryType` if biometry is available and enrolled else throw error `BiometryError`    |
-| getSupportedBiometryType | Promise return `BiometryType` if biometry is supported else return `null` even if biometry not enrolled |
+| method                                                    | description                                                                                             |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| isSensorAvailable                                         | Promise return `BiometryType` if biometry is available and enrolled else throw error `BiometryError`    |
+| getSupportedBiometryType                                  | Promise return `BiometryType` if biometry is supported else return `null` even if biometry not enrolled |
+| authenticate(title: string, options: AuthenticateOptions) | Show prompt of biometry and return promise `AuthenticationResult`                                       |
 
 
 ## Types
@@ -79,6 +80,25 @@ enum BiometryErrorCode {
   NOT_AVAILABLE = 'BiometryScannerNotAvailable',
   PASSCODE_NOT_SET = 'PasscodeNotSet',
   DEVICE_LOCKED_PERMANENT = 'DeviceLockedPermanent'
+
+  // authentication
+  AUTHENTICATION_CANCELED = 'AuthenticationCanceledByUser',
+}
+
+type AuthenticateOptions = {
+  withDeviceCredentials?: boolean,
+  /**
+   * Cancel button text. Android only
+   */
+  cancelText?: string,
+  /**
+   * Subtitle for prompt. Android only
+   */
+  subtitle?: string,
+  /**
+   * Description for prompt. Android only
+   */
+  description?: string,
 }
 
 ```

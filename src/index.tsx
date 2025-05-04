@@ -38,6 +38,35 @@ export enum BiometryErrorCode {
    * ios only
    */
   DEVICE_LOCKED_PERMANENT = 'DeviceLockedPermanent',
+  /**
+   * User cancel authentication
+   */
+  AUTHENTICATION_CANCELED = 'AuthenticationCanceledByUser',
+}
+
+export type AuthenticationResult =
+  | {
+      success: true;
+    }
+  | {
+      success: false;
+      error: string;
+    };
+
+export type AuthenticateOptions = {
+  withDeviceCredentials?: boolean,
+  /**
+   * Cancel button text. Android only
+   */
+  cancelText?: string,
+  /**
+   * Subtitle for prompt. Android only
+   */
+  subtitle?: string,
+  /**
+   * Description for prompt. Android only
+   */
+  description?: string,
 }
 
 type TBiometryTools = {
@@ -51,12 +80,38 @@ type TBiometryTools = {
    * else it returns null
    */
   getSupportedBiometryType: () => Promise<BiometryType | null>;
+  /**
+   * Authenticate user by biometry
+   */
+  authenticate: (
+    title: string,
+    options?: AuthenticateOptions,
+  ) => Promise<AuthenticationResult>;
 };
 
 export interface BiometryAvailableError extends Error {
   code: BiometryErrorCode;
 }
 
-const { BiometryTools } = NativeModules;
+export interface AuthenticationError extends Error {
+  code: BiometryErrorCode;
+}
 
-export default BiometryTools as TBiometryTools;
+export const isAuthenticationCanceledError = (error: unknown) => {
+  return error instanceof Error && 'code' in error && error.code === BiometryErrorCode.AUTHENTICATION_CANCELED
+}
+
+const { BiometryTools: Module } = NativeModules;
+
+const BiometryTools: TBiometryTools = {
+  isSensorAvailable: Module.isSensorAvailable,
+  getSupportedBiometryType: Module.getSupportedBiometryType,
+  authenticate: (
+    title: string, 
+    options: AuthenticateOptions = { withDeviceCredentials: false }
+  ): Promise<AuthenticationResult> => {
+    return Module.authenticate(title, options)
+  }
+}
+
+export default BiometryTools;

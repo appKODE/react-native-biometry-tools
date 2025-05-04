@@ -1,74 +1,24 @@
-#import "BiometryTools.h"
+#import <React/RCTBridgeModule.h>
 
-@implementation BiometryTools
+@interface RCT_EXTERN_MODULE(BiometryTools, NSObject)
 
-RCT_EXPORT_MODULE()
+RCT_EXTERN_METHOD(getSupportedBiometryType
+                  :(RCTPromiseResolveBlock)resolve
+                  :(RCTPromiseRejectBlock)reject)
 
-RCT_EXPORT_METHOD(getSupportedBiometryType:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(isSensorAvailable
+                  :(RCTPromiseResolveBlock)resolve
+                  :(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(authenticate
+                  :(NSString *)message
+                  :(NSDictionary *)options
+                  :(RCTPromiseResolveBlock)resolve
+                  :(RCTPromiseRejectBlock)reject)
+
++ (BOOL)requiresMainQueueSetup
 {
-  NSError *aerr = nil;
-  LAContext *context = [LAContext new];
-  BOOL canBeProtected = [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&aerr];
-
-  if (!aerr && canBeProtected) {
-    return resolve([self getBiometryType:context]);
-  }
-
-  return resolve([NSNull null]);
-}
-
-RCT_EXPORT_METHOD(isSensorAvailable:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject)
-{
-    LAContext *context = [[LAContext alloc] init];
-    NSError *error;
-
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
-        resolve([self getBiometryType:context]);
-    } else {
-        NSString *code;
-        NSString *message;
-
-        switch (error.code) {
-            case LAErrorBiometryNotAvailable:
-                code = @"BiometryScannerNotAvailable";
-                message = @"Biometry scanner is not available";
-                break;
-                
-            case LAErrorBiometryNotEnrolled:
-                code = @"BiometryScannerNotEnrolled";
-                message = @"Biometry scanner is not enrolled";
-                break;
-
-            case LAErrorBiometryLockout:
-                code = @"DeviceLockedPermanent";
-                message = @"Device locked permanent";
-                break;
-            
-            case LAErrorPasscodeNotSet:
-                code = @"PasscodeNotSet";
-                message = @"Passcode not set";
-                break;
-
-            default:
-                code = @"BiometryScannerNotSupported";
-                message = @"Biometry scanner is not supported";
-                break;
-        }
-
-        reject(code, message, nil);
-        return;
-    }
-}
-
-- (NSString *)getBiometryType:(LAContext *)context
-{
-    if (@available(iOS 11, *)) {
-        return context.biometryType == LABiometryTypeFaceID ? @"Face ID" : @"Touch ID";
-    }
-
-    return @"Touch ID";
+  return NO;
 }
 
 @end
