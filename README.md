@@ -15,7 +15,7 @@ yarn add @kode-frontend/react-native-biometry-tools
 ## 🎮 Usage
 
 ```js
-import BiometryTools from '@kode-frontend/react-native-biometry-tools';
+import BiometryTools, { BiometryType, isAuthenticationCanceledError } from '@kode-frontend/react-native-biometry-tools';
 
 export default function App() {
 
@@ -42,7 +42,26 @@ export default function App() {
   }, []);
 
   return (
-    <View />
+    <Button
+        title="Prompt authentication"
+        onPress={() => {
+          BiometryTools.authenticate('Title', { 
+            subtitle: 'subtitle',
+            description: 'description', 
+            withDeviceCredentials: true, 
+            cancelText: 'Cancel' 
+          })
+            .then((result) => {
+              console.log('Prompt result:', result);
+            })
+            .catch((e) => {
+              if (isAuthenticationCanceledError(e)) {
+                return console.log('Cancelled by user')
+              }
+              console.log('Prompt error:', e.message);
+            });
+        }}
+      />
   );
 }
 
