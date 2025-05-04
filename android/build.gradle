@@ -1,4 +1,8 @@
 buildscript {
+    ext.getExtOrDefault = {name ->
+        return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['BiometryTools_' + name]
+    }
+
     if (project == rootProject) {
         repositories {
             google()
@@ -7,11 +11,13 @@ buildscript {
 
         dependencies {
             classpath 'com.android.tools.build:gradle:3.5.3'
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${getExtOrDefault('kotlinVersion')}"
         }
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: "kotlin-android"
 
 def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
@@ -51,8 +57,11 @@ repositories {
     google()
 }
 
+def kotlin_version = getExtOrDefault("kotlinVersion")
+
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.biometric:biometric:1.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

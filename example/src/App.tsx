@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import BiometryTools, { BiometryType } from 'react-native-biometry-tools';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import BiometryTools, { BiometryType, isAuthenticationCanceledError } from '@kode-frontend/react-native-biometry-tools';
 
 export default function App() {
   const [isAvailable, setAvailableSensor] = React.useState<boolean>(false);
@@ -35,6 +35,27 @@ export default function App() {
         Supported biometry type:{' '}
         <Text style={styles.resultText}>{supportedBiometryType}</Text>
       </Text>
+
+      <Button
+        title="Prompt authentication"
+        onPress={() => {
+          BiometryTools.authenticate('Title', { 
+            subtitle: 'subtitle',
+            description: 'description', 
+            withDeviceCredentials: true, 
+            cancelText: 'Cancel' 
+          })
+            .then((result) => {
+              console.log('Prompt result:', result);
+            })
+            .catch((e) => {
+              if (isAuthenticationCanceledError(e)) {
+                return console.log('Cancelled by user')
+              }
+              console.log('Prompt error:', e.message);
+            });
+        }}
+      />
     </View>
   );
 }
