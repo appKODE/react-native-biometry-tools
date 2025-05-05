@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/appKODE/react-native-biometry-tools/compare/v0.2.3...v0.2.4) (2025-05-05)
+
+
+### Bug Fixes
+
+* fixed imports ([d9f5673](https://github.com/appKODE/react-native-biometry-tools/commit/d9f5673518682ef3c47789084dca895696696501))
+
 ### [0.2.3](https://github.com/appKODE/react-native-biometry-tools/compare/v0.2.2...v0.2.3) (2025-05-04)
 
 ### [0.2.2](https://github.com/appKODE/react-native-biometry-tools/compare/v0.2.1...v0.2.2) (2025-05-04)
