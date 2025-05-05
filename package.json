@@ -3,7 +3,8 @@
   "version": "0.2.3",
   "description": "Tools and helpers for biometry",
   "source": "./src/index.tsx",
-  "main": "./lib/module/index.js",
+  "main": "./lib/commonjs/index.js",
+  "module": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
@@ -159,12 +160,8 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      [
-        "module",
-        {
-          "esm": true
-        }
-      ],
+      "commonjs",
+      "module",
       [
         "typescript",
         {
